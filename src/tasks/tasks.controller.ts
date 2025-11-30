@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
   Query,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import type { Task } from './task.entity';
@@ -24,7 +25,9 @@ export class TasksController {
   }
 
   @Get('/:id')
-  async getTaskById(@Param('id') id: string): Promise<Task> {
+  async getTaskById(
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ): Promise<Task> {
     return this.tasksService.getTaskById(id);
   }
 
