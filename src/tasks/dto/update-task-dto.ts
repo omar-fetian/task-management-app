@@ -5,7 +5,7 @@ import {
   IsString,
   Length,
 } from 'class-validator';
-import { TaskStatus } from '../task.model';
+import { TaskStatus } from '../task.models';
 
 export class UpdateTaskDto {
   @IsOptional()

@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { TaskStatus } from './task.model';
+import { TaskStatus } from './task.models';
 
 @Entity({ name: 'tasks' })
 export class Task {
