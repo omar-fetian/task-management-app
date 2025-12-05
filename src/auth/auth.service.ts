@@ -11,16 +11,17 @@ export class AuthService {
     private readonly usersRepository: Repository<User>,
   ) {}
 
-  public async createUser(
-    authCredentialsDto: AuthCredentialsDto,
-  ): Promise<string> {
+  public async signUp(authCredentialsDto: AuthCredentialsDto): Promise<string> {
     const { username, password } = authCredentialsDto;
-    const existingUser = await this.usersRepository.findOneBy({ username });
-    if (existingUser) {
+    const user = this.usersRepository.create({ username, password });
+
+    try {
+      await this.usersRepository.save(user);
+      return 'User created successfully';
+    } catch (error) {
+      //this code needs to be improved later to handle different error codes
+      console.log(error);
       throw new ConflictException('Username already exists');
     }
-    const user = this.usersRepository.create({ username, password });
-    await this.usersRepository.save(user);
-    return 'User created successfully';
   }
 }

@@ -12,10 +12,10 @@ export class Task {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: 100 })
+  @Column({ length: 100, nullable: false })
   title: string;
 
-  @Column({ length: 500 })
+  @Column({ length: 500, nullable: false })
   description: string;
 
   @Column({ type: 'enum', enum: TaskStatus, default: TaskStatus.OPEN })

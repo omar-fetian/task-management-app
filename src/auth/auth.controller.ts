@@ -6,8 +6,8 @@ import { AuthCredentialsDto } from './dto/auth-credentials-dto';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Post()
-  async createUser(@Body() authCredentialsDto: AuthCredentialsDto) {
-    return this.authService.createUser(authCredentialsDto);
+  @Post('/signup')
+  async signUp(@Body() authCredentialsDto: AuthCredentialsDto) {
+    return this.authService.signUp(authCredentialsDto);
   }
 }

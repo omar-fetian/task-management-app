@@ -11,10 +11,18 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: 50, unique: true })
+  @Column({
+    length: 20,
+    unique: true,
+    nullable: false,
+  })
   username: string;
 
-  @Column({ length: 64 })
+  @Column({
+    length: 255,
+    nullable: false,
+    select: false, // Don't return password in queries by default
+  })
   password: string;
 
   @CreateDateColumn({ type: 'timestamp', precision: 6 })
