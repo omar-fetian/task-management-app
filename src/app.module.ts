@@ -3,13 +3,13 @@ import { TasksModule } from './tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Task } from './tasks/task.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // makes env variables available everywhere
     }),
-    TasksModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -25,6 +25,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         entities: [Task],
       }),
     }),
+    TasksModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
