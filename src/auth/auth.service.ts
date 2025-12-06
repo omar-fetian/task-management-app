@@ -34,11 +34,12 @@ export class AuthService {
   }
 
   public async signUp(authCredentialsDto: AuthCredentialsDto): Promise<string> {
-    const { username, password } = authCredentialsDto;
+    const { username, password, role } = authCredentialsDto;
     const hashedPassword = await this.hashPassword(password);
     const user = this.usersRepository.create({
       username,
       password: hashedPassword,
+      role,
     });
 
     try {

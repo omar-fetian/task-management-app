@@ -1,4 +1,6 @@
-import { IsNotEmpty, IsString, Length, Matches } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsString, Length, Matches } from 'class-validator';
+import { UserRole } from '../auth.models';
+
 export class AuthCredentialsDto {
   @IsNotEmpty()
   @IsString()
@@ -15,4 +17,9 @@ export class AuthCredentialsDto {
       'Password must be at least 8 characters long and contain at least one letter and one number',
   })
   password: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @IsEnum(UserRole)
+  role: UserRole;
 }

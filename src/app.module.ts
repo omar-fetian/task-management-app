@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // makes env variables available everywhere
+      envFilePath: [`.env`],
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
