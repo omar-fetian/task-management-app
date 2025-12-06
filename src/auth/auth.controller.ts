@@ -7,7 +7,16 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('/signup')
-  async signUp(@Body() authCredentialsDto: AuthCredentialsDto) {
+  async signUp(
+    @Body() authCredentialsDto: AuthCredentialsDto,
+  ): Promise<string> {
     return this.authService.signUp(authCredentialsDto);
+  }
+
+  @Post('/signin')
+  async signIn(
+    @Body() authCredentialsDto: AuthCredentialsDto,
+  ): Promise<string> {
+    return this.authService.signIn(authCredentialsDto);
   }
 }
