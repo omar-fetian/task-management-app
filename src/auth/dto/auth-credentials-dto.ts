@@ -7,7 +7,7 @@ export class AuthCredentialsDto {
 
   @IsNotEmpty()
   @IsString()
-  @Length(8, 255)
+  @Length(8, 128)
   @Matches(/((^=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
     // At least one digit OR one special character
     // At least one uppercase letter AND one lowercase letter
